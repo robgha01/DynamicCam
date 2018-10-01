@@ -1,0 +1,16 @@
+## Interface: 71000
+## Version: 1.0.71000
+## Title: DynamicCam
+## Author: mpstark
+## SavedVariables: DynamicCamDB
+## Notes: A more dynamic camera.
+## X-Curse-Packaged-Version: Beta_3
+## X-Curse-Project-Name: DynamicCam Lite
+## X-Curse-Project-ID: dynamiccam
+## X-Curse-Repository-ID: wow/dynamiccam/mainline
+
+embeds.xml
+
+Core.lua
+Camera.lua
+Options.lua

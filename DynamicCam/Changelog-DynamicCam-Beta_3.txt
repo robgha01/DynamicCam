@@ -1,0 +1,14 @@
+tag Beta_3
+a18c6350a0cc8cb66e32941160e3fa4c2198f27f
+Michael P. Starkweather <mpstark@gmail.com>
+2016-10-25 09:51:56 -0500
+
+
+
+--------------------
+
+Michael P. Starkweather:
+	- Adjust defaults for Beta 3 release and adjust some menu tooltips
+	- 7.1 changes to CVars and ToC
+	- Make sure that CameraZoom has increments when not passed them in
+	- First attempt at reactive zoom option (off by default) and some code cleanup
