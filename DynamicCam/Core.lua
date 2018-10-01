@@ -7,8 +7,8 @@ local AceAddon = LibStub("AceAddon-3.0");
 ---------------
 -- CONSTANTS --
 ---------------
-local DATABASE_VERSION = 1;
-local DEFAULT_VERSION = 1;
+local DATABASE_VERSION = 2;
+local DEFAULT_VERSION = 2;
 local ACTION_CAM_CVARS = {
     ["test_cameraOverShoulder"] = true,
 
@@ -787,7 +787,7 @@ function DynamicCam:GetDefaultSituations()
     end
 end
 return false;]];
-    newSituation.executeOnEnter = "local _, _, _, _, startTime, endTime = UnitCastingInfo(\"player\");\nthis.transitionTime = ((endTime - startTime)/1000) - .25;";
+    newSituation.executeOnEnter = "local _, _, _, _, startTime, endTime = UnitCastingInfo(\"player\");\nif endTime != nil then\nthis.transitionTime = ((endTime - startTime)/1000) - .25;\nend";
     newSituation.events = {"UNIT_SPELLCAST_START", "UNIT_SPELLCAST_STOP", "UNIT_SPELLCAST_SUCCEEDED", "UNIT_SPELLCAST_CHANNEL_START", "UNIT_SPELLCAST_CHANNEL_STOP", "UNIT_SPELLCAST_CHANNEL_UPDATE", "UNIT_SPELLCAST_INTERRUPTED"};
     newSituation.cameraActions.zoomSetting = "in";
     newSituation.cameraActions.zoomValue = 4;
@@ -804,7 +804,7 @@ return false;]];
 
     newSituation = self:CreateSituation("Annoying Spells");
     newSituation.priority = 1000;
-    newSituation.executeOnInit = "this.buffs = {46924, 51690, 188499, 210152};";
+    newSituation.executeOnInit = "this.buffs = {46924, 51690};"; -- 188499, 210152 removing those two as thay are for demon hunter
     newSituation.condition = [[for k,v in pairs(this.buffs) do 
     if (UnitBuff("player", GetSpellInfo(v))) then
         return true;
@@ -945,7 +945,7 @@ function DynamicCam:ApplyDefaultCameraSettings()
         UIParent:UnregisterEvent("EXPERIMENTAL_CVAR_CONFIRMATION_NEEDED");
     else
         -- if it's off, make sure to reset all ActionCam settings, then reenable popup
-        ResetTestCvars();
+        --ResetTestCvars();
         UIParent:RegisterEvent("EXPERIMENTAL_CVAR_CONFIRMATION_NEEDED");
     end
     
